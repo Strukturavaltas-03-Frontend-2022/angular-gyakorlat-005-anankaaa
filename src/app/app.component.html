@@ -64,7 +64,7 @@
       <input
         class="form-control mr-sm-2"
         type="text"
-        placeholder="Search"
+        placeholder="Search" (keyup)="onChangePhrase($event)"
       >
       <button
         class="btn btn-outline-success my-2 my-sm-0"
@@ -76,10 +76,16 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-      ...
+      <app-data-list [dataList]="userList"
+      (selectClick)="selectUser($event)"
+      (updateClick)="updateUser($event)"
+      (deleteClick)="deleteUser($event)"
+      ></app-data-list>
     </div>
     <div class="col-4">
-      ...
+      <app-user-detail [user]="currentUser"
+
+      (delUser)="deleteUser($event)"></app-user-detail>
     </div>
   </div>
 </div>

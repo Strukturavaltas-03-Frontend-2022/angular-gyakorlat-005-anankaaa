@@ -8,8 +8,24 @@ import { UserService } from './service/user.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'The good Angular programmer';
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
+  userList: User[] = this.userService.list;
+
+  currentUser: User = new User();
+
+  selectUser(user: User): void {
+    this.currentUser = user;
+  }
+
+  updateUser(user: User): void {
+    this.userService.updateUser(user);
+  }
+
+  deleteUser(user: User): void {
+    this.userService.removeUser(user);
+  }
 }
